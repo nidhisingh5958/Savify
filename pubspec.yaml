@@ -48,7 +48,6 @@ dependencies:
 
   # AI/ML Integration
   http: ^1.5.0
-  google_generative_ai: ^0.4.7
 
 
 
