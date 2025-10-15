@@ -1,4 +1,4 @@
- Savify 💰
+ <h1>Savify 💰</h1>
 
 A modern Flutter finance tracker app powered by AI agents for intelligent financial management and insights.
 
