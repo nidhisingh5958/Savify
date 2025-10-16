@@ -46,20 +46,6 @@ pubspec.lock
 *.xcuserdata
 *.xcuserstate
 
-# macOS
-/macos/Flutter/ephemeral/
-/macos/Flutter/Flutter.podspec
-/macos/Pods/
-
-# Linux
-/linux/flutter/
-
-# Windows
-/windows/flutter/
-
-# Web
-/.dart_tool/build/
-
 # IDEs and editors
 .idea/
 .vscode/
@@ -102,3 +88,4 @@ flutter_*.png
 # Backup files
 *.bak
 
+.flutter-plugins-dependencies
