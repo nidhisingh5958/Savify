@@ -64,7 +64,7 @@ class AIAgentService {
           id: 'insight_${DateTime.now().millisecondsSinceEpoch}_2',
           title: '📊 Spending Pattern Detected',
           description:
-              'Your highest spending category is ${topCategory.key.name} at \$${topCategory.value.toStringAsFixed(2)}. Consider setting a budget for this category.',
+              'Your highest spending category is ${categoryToString(topCategory.key)} at \$${topCategory.value.toStringAsFixed(2)}. Consider setting a budget for this category.',
           type: 'tip',
           createdAt: DateTime.now(),
         ),
@@ -128,7 +128,8 @@ class AIAgentService {
     // Calculate average spending per category
     for (var entry in categorySpending.entries) {
       final average = entry.value.reduce((a, b) => a + b) / entry.value.length;
-      predictions[entry.key.name] = average * 1.05; // 5% increase prediction
+      predictions[categoryToString(entry.key)] =
+          average * 1.05; // 5% increase prediction
     }
 
     return predictions;

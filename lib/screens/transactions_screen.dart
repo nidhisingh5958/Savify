@@ -41,7 +41,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
 
               if (_filterType != 'all') {
                 transactions = transactions.where((t) {
-                  return t.type.name == _filterType;
+                  return transactionTypeToString(t.type) == _filterType;
                 }).toList();
               }
 
@@ -122,7 +122,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           ),
           title: Text(transaction.title),
           subtitle: Text(
-            '${transaction.category.name} • ${DateFormat('MMM dd, yyyy').format(transaction.date)}',
+            '${categoryToString(transaction.category)} • ${DateFormat('MMM dd, yyyy').format(transaction.date)}',
           ),
           trailing: Text(
             '${isIncome ? '+' : '-'}\$${transaction.amount.toStringAsFixed(2)}',

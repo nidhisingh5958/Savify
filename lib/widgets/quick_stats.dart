@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../providers/transaction_provider.dart';
+import '../models/transaction.dart';
 
 class QuickStats extends StatelessWidget {
   const QuickStats({super.key});
@@ -46,10 +47,12 @@ class QuickStats extends StatelessWidget {
                   children: categorySpending.entries.map((entry) {
                     return Chip(
                       avatar: CircleAvatar(
-                        backgroundColor: _getColorForCategory(entry.key.name),
+                        backgroundColor: _getColorForCategory(
+                          categoryToString(entry.key),
+                        ),
                       ),
                       label: Text(
-                        '${entry.key.name}: \$${entry.value.toStringAsFixed(2)}',
+                        '${categoryToString(entry.key)}: \$${entry.value.toStringAsFixed(2)}',
                         style: const TextStyle(fontSize: 12),
                       ),
                     );
@@ -63,15 +66,15 @@ class QuickStats extends StatelessWidget {
     );
   }
 
-  List<PieChartSectionData> _getSections(Map<dynamic, double> data) {
+  List<PieChartSectionData> _getSections(Map<Category, double> data) {
     final total = data.values.fold(0.0, (sum, value) => sum + value);
 
-    return data.entries.map((entry) {
+    return data.entries.map((MapEntry<Category, double> entry) {
       final percentage = (entry.value / total * 100);
       return PieChartSectionData(
         value: entry.value,
         title: '${percentage.toStringAsFixed(1)}%',
-        color: _getColorForCategory(entry.key.name),
+        color: _getColorForCategory(categoryToString(entry.key)),
         radius: 60,
         titleStyle: const TextStyle(
           fontSize: 12,

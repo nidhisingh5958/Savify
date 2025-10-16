@@ -191,7 +191,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   }
 
   String _getCategoryName(Category category) {
-    return category.name[0].toUpperCase() + category.name.substring(1);
+    final name = categoryToString(category);
+    return name[0].toUpperCase() + name.substring(1);
   }
 
   void _saveTransaction() {

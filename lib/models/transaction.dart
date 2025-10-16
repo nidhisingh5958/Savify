@@ -14,6 +14,20 @@ enum Category {
   other,
 }
 
+// a `name` getter for enums for Dart SDKs that don't include Enum.name
+extension TransactionTypeName on TransactionType {
+  String get name => toString().split('.').last;
+}
+
+extension CategoryName on Category {
+  String get name => toString().split('.').last;
+}
+
+// Helpers to reliably get enum names at runtime
+String transactionTypeToString(TransactionType t) =>
+    t.toString().split('.').last;
+String categoryToString(Category c) => c.toString().split('.').last;
+
 class Transaction {
   final String id;
   final String title;
